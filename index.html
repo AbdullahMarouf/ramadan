@@ -20,65 +20,75 @@
       id="progress-barr"
       class="fixed top-0 left-0 w-0 h-1 bg-black z-50"
     ></div>
-    <h1 class="text-3xl font-bold mb-6 flex items-center gap-2">
+
+    <h1
+      class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 flex items-center gap-2 text-center"
+    >
       🌙 رمضــــــــــــــان كــــــــــــــــريم
     </h1>
 
     <!-- عداد الإفطار -->
     <div
-      class="bg-white text-gray-800 rounded-lg shadow-lg p-6 mb-6 w-11/12 text-center"
+      class="bg-white text-gray-800 rounded-lg shadow-lg p-6 mb-6 w-full sm:w-11/12 text-center"
     >
-      <h2 class="text-xl font-semibold mb-2">الوقت المتبقي للإفطار</h2>
-      <p id="iftar-countdown" class="text-2xl font-bold text-purple-700"></p>
-      <!-- كاردات الأذكار -->
+      <h2 class="text-lg sm:text-xl font-semibold mb-2">
+        الوقت المتبقي للإفطار
+      </h2>
+      <p
+        id="iftar-countdown"
+        class="text-xl sm:text-2xl font-bold text-purple-700"
+      ></p>
       <button
-        class="bg-purple-600 text-white px-4 py-2 rounded mt-4 hover:bg-purple-700 justify-center showRandomZikr"
+        class="bg-purple-600 text-white px-4 py-2 rounded mt-4 hover:bg-purple-700 showRandomZikr"
       >
         عرض ذكر جديد
       </button>
     </div>
-    <section class="bg-white shadow-lg rounded-lg p-6 w-11/12 mx-auto mb-6">
-      <h2 class="text-2xl font-bold mb-6 text-center text-purple-900">
+
+    <!-- مواقيت الصلاة -->
+    <section
+      class="bg-white shadow-lg rounded-lg p-6 w-full sm:w-11/12 mx-auto mb-6"
+    >
+      <h2
+        class="text-xl sm:text-2xl font-bold mb-6 text-center text-purple-900"
+      >
         🕌 مواقيت الصلاة
       </h2>
 
-      <!-- بطاقات الصلوات -->
       <div
         id="prayer-times"
-        class="grid grid-cols-5 gap-4 text-center text-gray-800"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center text-gray-800"
       >
         <!-- محتوى الصلوات يجي من API -->
       </div>
 
       <!-- الطقس والتاريخ الهجري -->
-      <div class="grid grid-cols-2 gap-6 mt-8 text-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-center">
         <div class="bg-gray-100 rounded-lg p-4 shadow">
           <i class="fas fa-cloud-sun text-blue-600 text-2xl mb-2"></i>
           <h3 class="font-semibold text-lg text-gray-800">☀️ حالة الطقس</h3>
-          <p id="weather" class="text-gray-700 mt-1 text-gray-800">
-            جاري التحميل...
-          </p>
+          <p id="weather" class="text-gray-800 mt-1">جاري التحميل...</p>
         </div>
 
         <div class="bg-gray-100 rounded-lg p-4 shadow">
           <i class="fas fa-calendar-alt text-green-600 text-2xl mb-2"></i>
           <h3 class="font-semibold text-lg text-gray-800">📅 التاريخ الهجري</h3>
-          <p id="hijri-date" class="text-gray-700 mt-1 text-gray-800">
-            جاري التحميل...
-          </p>
+          <p id="hijri-date" class="text-gray-800 mt-1">جاري التحميل...</p>
         </div>
       </div>
     </section>
+
     <!-- مفكرة أهداف -->
-    <div class="flex grid-cols-2 gap-5 w-11/12 justify-center">
+    <div class="grid grid-cols-1 gap-5 w-full sm:w-11/12 justify-center">
+      <!-- عداد التسبيح -->
       <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 mb-6 w-full">
-        <h2 class="text-xl font-semibold mb-4">عداد التسبيح 📿</h2>
-        <!-- العداد -->
-        <div id="counter" class="text-2xl font-bold text-purple-700 mb-2">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4">عداد التسبيح 📿</h2>
+        <div
+          id="counter"
+          class="text-xl sm:text-2xl font-bold text-purple-700 mb-2"
+        >
           0
         </div>
-
-        <!-- زر التسبيح -->
         <button
           onclick="incrementCounter()"
           class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition text-sm"
@@ -86,7 +96,6 @@
           سبحان الله
         </button>
         <br />
-        <!-- زر إعادة التصفير -->
         <button
           onclick="resetCounter()"
           class="mt-2 bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition text-xs"
@@ -96,41 +105,45 @@
       </div>
 
       <!-- عداد ختم القرآن -->
-      <div
-        class="bg-white text-gray-800 rounded-lg shadow-lg p-6 mb-6 w-full max-w-2xl"
-      >
+      <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 mb-6 w-full">
         <input
           type="number"
           id="pages-read"
           placeholder="أدخل عدد الصفحات"
-          class="border px-4 py-2 rounded"
+          class="border px-4 py-2 rounded w-full"
         />
-
         <button
           onclick="submitProgress()"
-          class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition"
+          class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition w-full"
         >
           حفظ
         </button>
-
         <div class="w-full bg-gray-200 rounded h-6 mt-4">
-          <div id="progress-bar" class="h-6 rounded" style="width: 0%"></div>
+          <div
+            id="progress-bar"
+            class="h-6 rounded bg-purple-600"
+            style="width: 0%"
+          ></div>
         </div>
         <p id="progress-text" class="mt-2 text-sm text-gray-700"></p>
       </div>
     </div>
+
+    <!-- زر العودة للأعلى -->
     <button
       id="backToTop"
-      class="fixed bottom-6 right-6 bg-white text-purple-800 w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-500 hover:bg-gray-300 -bottom-40"
+      class="fixed bottom-6 right-6 bg-white text-purple-800 w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-500 hover:bg-gray-300"
     >
       <i class="fa-solid fa-angles-up"></i>
     </button>
+
+    <!-- الفوتر -->
     <footer class="bg-transparent text-white py-6 w-full">
       <div class="flex justify-center items-center">
-        <img src="images/image.png" alt="رمضان" class="w-96" />
+        <img src="images/image.png" alt="رمضان" class="w-64 sm:w-96" />
       </div>
-      <!-- <p class="text-center mt-4 text-sm">© 2026 - رمضان مبارك 🌙</p> -->
     </footer>
+
     <script src="js/script.js"></script>
   </body>
 </html>
