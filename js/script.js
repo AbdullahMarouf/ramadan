@@ -29,11 +29,11 @@ function updateCountdown() {
     alertShown = true;
 
     clearInterval(countdownInterval);
-    // بعد 5 دقائق يبدأ العد من جديد لليوم التالي
+    // بعد 20 دقائق يبدأ العد من جديد لليوم التالي
     setTimeout(() => {
       alertShown = false;
       startCountdown();
-    }, 300000);
+    }, 200000);
   }
 }
 // تشغيل العداد أول مرة
@@ -125,8 +125,20 @@ const btnZikr = document.querySelector(".showRandomZikr");
 // إضافة حدث الضغط
 btnZikr.addEventListener("click", () => {
   let random = azkar[Math.floor(Math.random() * azkar.length)];
-  Swal.fire("وذكِّـــــر 🌙", random, "info");
+
+  Swal.fire({
+    title: "وذكِّــــــــــــــــــر 🌙",
+    text: random,
+    imageUrl: "images/lantern.png",
+    imageWidth: 120,
+    background: "#ffffff",
+    color: "#000000",
+    customClass: {
+      title: "text-purple-600 font-extrabold text-3xl mb-4 text-center",
+    },
+  });
 });
+
 // -------------------------
 // Progress Bar للتمرير (Scroll Progress)
 // -------------------------
@@ -235,3 +247,19 @@ function resetCounter() {
   count = 0;
   document.getElementById("counter").innerText = count;
 }
+
+document.querySelectorAll(".accordion-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    // Toggle icon
+    const icon = button.querySelector("span:last-child");
+    icon.classList.toggle("rotate-45");
+
+    // Show/hide content
+    const content = button.nextElementSibling;
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+});
