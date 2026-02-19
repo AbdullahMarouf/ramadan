@@ -7,7 +7,7 @@ function startCountdown() {
 function updateCountdown() {
   let now = new Date();
   let iftarTime = new Date();
-  iftarTime.setHours(17, 32, 0, 0);
+  iftarTime.setHours(17, 34, 0, 0);
   // إذا الوقت الحالي بعد الإفطار، نحسب لليوم التالي
   if (now > iftarTime) {
     iftarTime.setDate(iftarTime.getDate() + 1);
@@ -127,7 +127,7 @@ btnZikr.addEventListener("click", () => {
   let random = azkar[Math.floor(Math.random() * azkar.length)];
 
   Swal.fire({
-    title: "وذكِّــــــــــــــــــر 🌙",
+    title: "وذكِّــــــــــــــــــر",
     text: random,
     imageUrl: "images/lantern.png",
     imageWidth: 120,
