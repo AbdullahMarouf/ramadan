@@ -20,8 +20,12 @@ function updateCountdown() {
   let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  document.getElementById("iftar-countdown").innerText =
-    `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية حتى الإفطار القادم 🌙`;
+  document.getElementById("iftar-countdown").innerHTML = `
+    <div class="flex flex-col items-center">
+        <span class="text-xl font-bold">${hours} ساعة ${minutes} دقيقة ${seconds} ثانية</span>
+        <span class="text-lg font-bold text-purple-600 mt-2">حتى الإفطار القادم 🌙</span>
+    </div>
+`;
 
   // عند الوصول للإفطار يظهر تنبيه SweetAlert
   if (diff <= 0 && !alertShown) {
