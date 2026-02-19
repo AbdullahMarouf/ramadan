@@ -12,6 +12,22 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Amiri", serif;
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+    </style>
   </head>
   <body
     class="bg-gradient-to-br from-purple-900 to-indigo-800 text-white min-h-screen p-6 flex flex-col items-center"
@@ -24,7 +40,7 @@
     <h1
       class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 flex items-center gap-2 text-center"
     >
-      🌙 رمضــــــــــــــان كــــــــــــــــريم
+      رمضــــــــــــــان كــــــــــــــــريم
     </h1>
 
     <!-- عداد الإفطار -->
@@ -96,7 +112,7 @@
     >
       <!-- عداد التسبيح -->
       <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 mb-6 w-full">
-        <h2 class="text-lg sm:text-xl font-semibold mb-4">عداد التسبيح 📿</h2>
+        <h2 class="text-lg sm:text-xl font-semibold mb-8">عداد التسبيح 📿</h2>
         <div
           id="counter"
           class="text-2xl sm:text-3xl font-bold text-purple-700 mb-2"
@@ -120,6 +136,10 @@
 
       <!-- عداد ختم القرآن -->
       <div class="bg-white text-gray-800 rounded-lg shadow-lg p-6 mb-6 w-full">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4">
+          حساب نسبة الختم للمصحف
+        </h2>
+
         <input
           type="number"
           id="pages-read"
@@ -128,7 +148,7 @@
         />
         <button
           onclick="submitProgress()"
-          class="mt-2 bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700 transition w-full text-base sm:text-lg"
+          class="mt-2 bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition w-full text-base sm:text-lg"
         >
           حفظ
         </button>
@@ -153,14 +173,138 @@
     >
       <i class="fa-solid fa-angles-up text-lg sm:text-xl"></i>
     </button>
+    <div class="mx-auto w-11/12">
+      <h1 class="text-3xl font-extrabold text-center mb-6 text-white">
+        أذكـــــــــــــــــــــــار عامـــــــــــة
+      </h1>
 
+      <div class="space-y-2">
+        <!-- Item 1 -->
+        <div class="bg-white border border-gray-200 rounded-lg">
+          <button
+            class="accordion-btn w-full p-4 text-left flex justify-between items-center rounded-lg hover:bg-gray-100"
+          >
+            <h2 class="font-extrabold text-gray-900">
+              عند بدأ الصيام - السحور
+            </h2>
+            <span
+              class="text-lg transition-transform duration-300 text-gray-800"
+              >+</span
+            >
+          </button>
+          <div class="accordion-content">
+            <div class="p-4 pt-0 text-gray-600 my-5">
+              وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg">
+          <button
+            class="accordion-btn w-full p-4 text-left flex justify-between items-center rounded-lg hover:bg-gray-100"
+          >
+            <h2 class="font-extrabold text-gray-900">عند بدء الإفطار</h2>
+            <span
+              class="text-lg transition-transform duration-300 text-gray-800"
+              >+</span
+            >
+          </button>
+          <div class="accordion-content">
+            <div class="p-4 pt-0 text-gray-600 my-5">
+              ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْ
+              شَاءَ اللَّهُ
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg">
+          <button
+            class="accordion-btn w-full p-4 text-left flex justify-between items-center rounded-lg hover:bg-gray-100"
+          >
+            <h2 class="font-extrabold text-gray-900">العشر الأوائل من رمضان</h2>
+            <span
+              class="text-lg transition-transform duration-300 text-gray-800"
+              >+</span
+            >
+          </button>
+          <div class="accordion-content">
+            <div class="p-4 pt-0 text-gray-600 my-5">
+              يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg">
+          <button
+            class="accordion-btn w-full p-4 text-left flex justify-between items-center rounded-lg hover:bg-gray-100"
+          >
+            <h2 class="font-extrabold text-gray-900">العشر الثانية من رمضان</h2>
+            <span
+              class="text-lg transition-transform duration-300 text-gray-800"
+              >+</span
+            >
+          </button>
+          <div class="accordion-content">
+            <div class="p-4 pt-0 text-gray-600 my-5">
+              اَسْتَغْفِرُ اللہَ رَبِّی مِنْ کُلِّ زَنْبٍ وَّ اَتُوْبُ اِلَیْہِ
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg">
+          <button
+            class="accordion-btn w-full p-4 text-left flex justify-between items-center rounded-lg hover:bg-gray-100"
+          >
+            <h2 class="font-extrabold text-gray-900">العشر الأواخر من رمضان</h2>
+            <span
+              class="text-lg transition-transform duration-300 text-gray-800"
+              >+</span
+            >
+          </button>
+          <div class="accordion-content">
+            <div class="p-4 pt-0 text-gray-600 my-5">
+              اَللَّهُمَّ أَجِرْنِي مِنَ النَّارِ
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg">
+          <button
+            class="accordion-btn w-full p-4 text-left flex justify-between items-center rounded-lg hover:bg-gray-100"
+          >
+            <h2 class="font-extrabold text-gray-900">ليلة القدر</h2>
+            <span
+              class="text-lg transition-transform duration-300 text-gray-800"
+              >+</span
+            >
+          </button>
+          <div class="accordion-content">
+            <div class="p-4 pt-0 text-gray-600 my-5">
+              اللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ
+              عَنِّي
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- الفوتر -->
     <footer class="bg-transparent text-white py-6 w-full">
       <div class="flex justify-center items-center">
         <img src="images/image.png" alt="رمضان" class="w-64 sm:w-96" />
       </div>
     </footer>
+    <script>
+      document.querySelectorAll(".accordion-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          // Toggle icon
+          const icon = button.querySelector("span:last-child");
+          icon.classList.toggle("rotate-45");
 
+          // Show/hide content
+          const content = button.nextElementSibling;
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      });
+    </script>
     <script src="js/script.js"></script>
   </body>
 </html>
