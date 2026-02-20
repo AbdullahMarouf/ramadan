@@ -1,7 +1,7 @@
-if (!localStorage.getItem("welcome")) {
-  Swal.fire("رمضان مبارك 🌙");
-  localStorage.setItem("welcome", "yes");
-}
+// if (!localStorage.getItem("welcome")) {
+//   Swal.fire("رمضان مبارك 🌙");
+//   localStorage.setItem("welcome", "yes");
+// }
 /********  عداد الإفطار   *********** */
 let alertShown = false;
 let countdownInterval;
