@@ -134,8 +134,12 @@ btnZikr.addEventListener("click", () => {
     text: random,
     imageUrl: "images/lantern.png",
     imageWidth: 120,
+
+    width: window.innerWidth < 640 ? 280 : 500, // أصغر على الجوال
+
     background: "#ffffff",
     color: "#000000",
+
     customClass: {
       title: "text-purple-600 font-extrabold text-3xl mb-4 text-center",
     },
