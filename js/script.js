@@ -156,17 +156,8 @@ window.onscroll = () => {
 // -------------------------
 // مواقيت الصلاة (Prayer Times API)
 // -------------------------
-// fetch(
-//   "https://api.aladhan.com/v1/timingsByCity?city=Gaza&country=Palestine&method=4",
-// )
-// fetch(
-//   "https://cors-anywhere.herokuapp.com/https://api.aladhan.com/v1/timingsByCity?city=Gaza&country=Palestine&method=4",
-// )
 fetch(
-  "https://api.allorigins.win/get?url=" +
-    encodeURIComponent(
-      "https://api.aladhan.com/v1/timingsByCity?city=Gaza&country=Palestine&method=4",
-    ),
+  "https://api.aladhan.com/v1/timingsByCity?city=Gaza&country=Palestine&method=4",
 )
   .then((res) => res.json())
   .then((data) => {
