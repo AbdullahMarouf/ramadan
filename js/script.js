@@ -1,3 +1,7 @@
+if (!localStorage.getItem("welcome")) {
+  Swal.fire("رمضان مبارك 🌙");
+  localStorage.setItem("welcome", "yes");
+}
 /********  عداد الإفطار   *********** */
 let alertShown = false;
 let countdownInterval;
@@ -267,3 +271,127 @@ document.querySelectorAll(".accordion-btn").forEach((button) => {
     }
   });
 });
+// ---------------------------------
+// حديث نبوي عشوائي (Random Hadith API)
+/************************************** */
+async function getRandomHadith() {
+  let res = await fetch(
+    "https://api.hadith.gading.dev/books/muslim?range=1-300",
+  );
+
+  let data = await res.json();
+
+  let hadiths = data.data.hadiths;
+
+  let random = hadiths[Math.floor(Math.random() * hadiths.length)];
+
+  Swal.fire({
+    title: "حديث نبوي ﷺ",
+
+    html: `
+    <div class="
+    font-['serif']
+    text-sm sm:text-lg
+    leading-7 sm:leading-8
+    text-gray-700
+    text-right
+    ">
+
+    ${random.arab}
+
+    </div>
+    `,
+
+    confirmButtonText: "حسناً",
+
+    customClass: {
+      title:
+        "text-amber-600 font-extrabold text-xl sm:text-3xl text-center font-serif",
+
+      confirmButton:
+        "bg-amber-500 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-amber-600 transition text-sm sm:text-base w-full",
+
+      popup:
+        "bg-white text-gray-800 rounded-lg shadow-lg p-4 sm:p-6 w-[280px] sm:w-[420px] md:w-[500px]",
+    },
+  });
+}
+
+// =============================
+// آية قرآنية Toast كل 15 دقيقة
+// =============================
+
+async function showAyahToast() {
+  try {
+    let res = await fetch("https://api.alquran.cloud/v1/ayah/random/ar");
+    let data = await res.json();
+
+    let ayah = data.data.text;
+    let surah = data.data.surah.name;
+    let number = data.data.numberInSurah;
+
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+
+      background: "#ffffff",
+
+      customClass: {
+        popup: "p-3 sm:p-5 w-[260px] sm:w-[380px] rounded-xl shadow-lg",
+      },
+
+      html: `
+      <div class="flex items-start gap-2 sm:gap-3 text-right">
+
+        <img 
+        src="images/lantern.png"
+        class="w-8 sm:w-10 mt-1"
+        />
+
+        <div class="flex-1">
+
+          <div class="font-bold text-sm sm:text-base mb-1">
+          آية قرآنية 📖
+          </div>
+
+          <div class="
+          font-['Amiri']
+          text-xs sm:text-sm
+          leading-6 sm:leading-7
+          font-bold
+          ">
+
+          ${ayah}
+
+          </div>
+
+          <div class="
+          font-['Amiri']
+          text-[10px] sm:text-xs
+          text-gray-500
+          mt-1
+          ">
+
+          سورة ${surah} - آية ${number}
+
+          </div>
+
+        </div>
+
+      </div>
+      `,
+    });
+  } catch (error) {
+    console.log("Ayah API Error");
+  }
+}
+
+// أول مرة
+showAyahToast();
+
+// كل 5 دقيقة
+setInterval(showAyahToast, 300000);
