@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+// if (!localStorage.getItem("welcome")) {
+//   Swal.fire("رمضان مبارك 🌙");
+//   localStorage.setItem("welcome", "yes");
+// }
+/********  عداد الإفطار   *********** */
+>>>>>>> db9a88a6de13b151d9de2fab196c90978ebaa3ae
 let alertShown = false;
 let countdownInterval;
 function startCountdown() {
