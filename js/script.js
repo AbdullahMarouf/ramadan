@@ -1,8 +1,3 @@
-if (!localStorage.getItem("welcome")) {
-  Swal.fire("رمضان مبارك 🌙");
-  localStorage.setItem("welcome", "yes");
-}
-/********  عداد الإفطار   *********** */
 let alertShown = false;
 let countdownInterval;
 function startCountdown() {
@@ -186,7 +181,6 @@ fetch(
           <h3 class="font-semibold">${prayer.name}</h3>
           <p class="text-gray-700 mt-1">${prayer.time}</p>
         `;
-
       container.appendChild(card);
     });
   });
@@ -320,15 +314,28 @@ async function getRandomHadith() {
 // =============================
 // آية قرآنية Toast كل 15 دقيقة
 // =============================
-
 async function showAyahToast() {
   try {
-    let res = await fetch("https://api.alquran.cloud/v1/ayah/random/ar");
+    let res = await fetch(
+      "https://api.quran.com/api/v4/verses/random?language=ar&fields=text_uthmani,chapter_id,verse_key",
+    );
+
     let data = await res.json();
 
-    let ayah = data.data.text;
-    let surah = data.data.surah.name;
-    let number = data.data.numberInSurah;
+    let ayah = data.verse.text_uthmani;
+
+    let verseKey = data.verse.verse_key.split(":");
+    let surahNumber = verseKey[0];
+    let ayahNumber = verseKey[1];
+
+    // جلب اسم السورة
+    let resSurah = await fetch(
+      `https://api.quran.com/api/v4/chapters/${surahNumber}?language=ar`,
+    );
+
+    let surahData = await resSurah.json();
+
+    let surahName = surahData.chapter.name_arabic;
 
     Swal.fire({
       toast: true,
@@ -364,9 +371,7 @@ async function showAyahToast() {
           leading-6 sm:leading-7
           font-bold
           ">
-
           ${ayah}
-
           </div>
 
           <div class="
@@ -375,9 +380,7 @@ async function showAyahToast() {
           text-gray-500
           mt-1
           ">
-
-          سورة ${surah} - آية ${number}
-
+          سورة ${surahName} - آية ${ayahNumber}
           </div>
 
         </div>
@@ -386,12 +389,12 @@ async function showAyahToast() {
       `,
     });
   } catch (error) {
-    console.log("Ayah API Error");
+    console.log("Ayah API Error", error);
   }
 }
 
 // أول مرة
 showAyahToast();
 
-// كل 5 دقيقة
+// كل 5 دقائق
 setInterval(showAyahToast, 300000);
