@@ -273,6 +273,12 @@ document.querySelectorAll(".accordion-btn").forEach((button) => {
 // حديث نبوي عشوائي (Random Hadith API)
 /************************************** */
 async function getRandomHadith() {
+  let spinner = document.getElementById("spinnerIcon");
+
+  // إظهار السبينر
+  spinner.classList.remove("!hidden");
+  spinner.classList.add("fa-spin");
+
   let res = await fetch(
     "https://api.hadith.gading.dev/books/muslim?range=1-300",
   );
@@ -281,22 +287,27 @@ async function getRandomHadith() {
 
   let hadiths = data.data.hadiths;
 
+  // إخفاء السبينر
+  spinner.classList.add("!hidden");
+  spinner.classList.remove("fa-spin");
+
   let random = hadiths[Math.floor(Math.random() * hadiths.length)];
 
   Swal.fire({
     title: "حديث نبوي ﷺ",
 
     html: `
-    <div class="
-    font-['serif']
-    text-sm sm:text-lg
-    leading-7 sm:leading-8
-    text-gray-700
-    text-right
-    ">
-
+<div class="
+font-['serif']
+text-sm sm:text-lg
+leading-7 sm:leading-8
+text-gray-700
+text-right
+max-h-[300px]
+overflow-y-auto
+px-2
+">
     ${random.arab}
-
     </div>
     `,
 
@@ -314,7 +325,6 @@ async function getRandomHadith() {
     },
   });
 }
-
 // =============================
 // آية قرآنية Toast كل 15 دقيقة
 // =============================
